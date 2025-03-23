@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <!-- Add jQuery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <style>
+            *{
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body class="bg-[#292727] text-white min-h-screen">
+        <!-- Desktop and tablet navigation bar -->
+        <nav class="hidden md:flex items-center justify-between px-4 py-1 lg:px-6">
+            <div class="flex items-center">
+                <img src="logo.png" alt="logo" class="w-16 lg:w-24">
+            </div>
+            <div class="flex items-center gap-2 lg:gap-4">
+                <a href="" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1 px-4 lg:py-2 lg:px-6 rounded-lg text-sm lg:text-base transition duration-300">Login</a>
+                <a href="" class="bg-transparent hover:bg-white/10 text-white font-bold py-1 px-4 lg:py-2 lg:px-6 rounded-lg border border-white text-sm lg:text-base transition duration-300">Sign Up</a>
+            </div>
+        </nav>
+
+        <!-- Mobile navigation bar - with even larger logo -->
+        <nav class="flex md:hidden items-center justify-between px-4 py-3">
+            <div class="flex items-center">
+                <img src="logo.png" alt="logo" class="w-24">
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-5 rounded-lg text-sm transition duration-300">Login</a>
+                <a href="" class="bg-transparent hover:bg-white/10 text-white font-bold py-2 px-5 rounded-lg border border-white text-sm transition duration-300">Sign Up</a>
+            </div>
+        </nav>
+
+        <!-- Promotional section for desktop and tablet -->
+        <div class="hidden md:block bg-[#292727] py-8 lg:py-12">
+            <div class="container mx-auto px-4 lg:px-6 flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 lg:w-3/5 mb-6 md:mb-0 flex flex-col justify-center gap-4">
+                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 lg:mb-4">
+                        Less stress when sharing expenses <span class="text-yellow-500" id="changing-text-desktop">on trips.</span>
+                    </h1>
+                    <p class="text-base md:text-lg mb-6">Keep track of your shared expenses and balances with housemates, trips, groups, friends, and family.</p>
+                    <a href="" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-6 rounded-lg transition duration-300">Sign up</a>
+                </div>
+                <div class="md:w-1/2 lg:w-2/5 flex justify-center">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 bg-[#292727]">
+                            <div class="text-3xl mb-1 text-teal-400">✈️</div>
+                        </div>
+                        <div class="p-3 bg-[#292727]">
+                            <div class="text-3xl mb-1 text-purple-300">🏠</div>
+                        </div>
+                        <div class="p-3 bg-[#292727]">
+                            <div class="text-3xl mb-1 text-pink-400">❤️</div>
+                        </div>
+                        <div class="p-3 bg-[#292727]">
+                            <div class="text-3xl mb-1 text-gray-400">❄️</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile promotional section -->
+        <div class="md:hidden bg-[#292727] px-4 py-6">
+            <div class="flex flex-col items-center gap-6">
+                <!-- Headline section at top -->
+                <div class="text-center mb-4">
+                    <h1 class="text-2xl font-bold mb-1">
+                        Less stress when sharing expenses 
+                        <span class="text-yellow-500 block text-2xl" id="changing-text-mobile">on trips.</span>
+                    </h1>
+                </div>
+                
+                <!-- Icon row -->
+                <div class="flex justify-center w-full gap-3 mb-6">
+                    <div class="text-3xl text-teal-400">✈️</div>
+                    <div class="text-3xl text-purple-300">🏠</div>
+                    <div class="text-3xl text-pink-400">❤️</div>
+                    <div class="text-3xl text-gray-400">❄️</div>
+                </div>
+                
+                <!-- Middle div replacing airplane image -->
+                <div class="w-44 h-44 bg-[#292727] border-2 border-dashed border-white/20 mb-6 flex items-center justify-center">
+                    <span class="text-base text-white/50">Content Area</span>
+                </div>
+                
+                <!-- CTA button -->
+                <a href="" class="w-full max-w-xs bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-4 rounded-lg text-center transition duration-300 mb-4 text-base">Sign up</a>
+                
+                <!-- Footer text -->
+                <p class="text-sm text-center">
+                    Keep track of your shared expenses and balances with housemates, trips, groups, friends, and family.
+                </p>
+            </div>
+        </div>
+
+        <!-- jQuery script to change text -->
+        <script>
+            $(document).ready(function() {
+                // Array of texts to rotate through
+                const texts = ["on trips.", "on dates.", "with friends.", "with anyone."];
+                let currentIndexDesktop = 0;
+                let currentIndexMobile = 0;
+                
+                // Function to change the desktop text
+                function changeDesktopText() {
+                    currentIndexDesktop = (currentIndexDesktop + 1) % texts.length;
+                    $("#changing-text-desktop").fadeOut(400, function() {
+                        $(this).text(texts[currentIndexDesktop]).fadeIn(400);
+                    });
+                }
+                
+                // Function to change the mobile text
+                function changeMobileText() {
+                    currentIndexMobile = (currentIndexMobile + 1) % texts.length;
+                    $("#changing-text-mobile").fadeOut(400, function() {
+                        $(this).text(texts[currentIndexMobile]).fadeIn(400);
+                    });
+                }
+                
+                // Change text every 5 seconds
+                setInterval(changeDesktopText, 5000);
+                setInterval(changeMobileText, 5000);
+            });
+        </script>
+    </body>
+</html>
