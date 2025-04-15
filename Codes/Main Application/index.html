@@ -3,17 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- J-Query -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <!-- Add Tailwind -->
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <!-- Add jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <style>
-            *{
-                margin: 0px;
-            }
-        </style>
+        <script src="script.js"></script>
     </head>
-    <body class="bg-[#292727] text-white min-h-screen">
+    <body class="bg-[#292727] text-white min-h-screen m-0">
         <!-- Desktop and tablet navigation bar -->
         <nav class="hidden md:flex items-center justify-between px-4 py-1 lg:px-6">
             <div class="flex items-center">
@@ -21,7 +17,7 @@
             </div>
             <div class="flex items-center gap-2 lg:gap-4">
                 <a href="" class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-1 px-4 lg:py-2 lg:px-6 rounded-lg text-sm lg:text-base transition duration-300">Login</a>
-                <a href="" class="bg-transparent hover:bg-white/10 text-white font-bold py-1 px-4 lg:py-2 lg:px-6 rounded-lg border border-white text-sm lg:text-base transition duration-300">Sign Up</a>
+                <a href="signup.html" class="bg-transparent hover:bg-white/10 text-white font-bold py-1 px-4 lg:py-2 lg:px-6 rounded-lg border border-white text-sm lg:text-base transition duration-300">Sign Up</a>
             </div>
         </nav>
 
@@ -90,7 +86,7 @@
                 </div>
                 
                 <!-- CTA button -->
-                <a href="" class="w-full max-w-xs bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-4 rounded-lg text-center transition duration-300 mb-4 text-base">Sign up</a>
+                <a href="signup.html" class="w-full max-w-xs bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-4 rounded-lg text-center transition duration-300 mb-4 text-base">Sign up</a>
                 
                 <!-- Footer text -->
                 <p class="text-sm text-center">
@@ -98,35 +94,6 @@
                 </p>
             </div>
         </div>
-
-        <!-- jQuery script to change text -->
-        <script>
-            $(document).ready(function() {
-                // Array of texts to rotate through
-                const texts = ["on trips.", "on dates.", "with friends.", "with anyone."];
-                let currentIndexDesktop = 0;
-                let currentIndexMobile = 0;
-                
-                // Function to change the desktop text
-                function changeDesktopText() {
-                    currentIndexDesktop = (currentIndexDesktop + 1) % texts.length;
-                    $("#changing-text-desktop").fadeOut(400, function() {
-                        $(this).text(texts[currentIndexDesktop]).fadeIn(400);
-                    });
-                }
-                
-                // Function to change the mobile text
-                function changeMobileText() {
-                    currentIndexMobile = (currentIndexMobile + 1) % texts.length;
-                    $("#changing-text-mobile").fadeOut(400, function() {
-                        $(this).text(texts[currentIndexMobile]).fadeIn(400);
-                    });
-                }
-                
-                // Change text every 5 seconds
-                setInterval(changeDesktopText, 5000);
-                setInterval(changeMobileText, 5000);
-            });
-        </script>
+       
     </body>
 </html>
