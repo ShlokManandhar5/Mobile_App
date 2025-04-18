@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- J-Query -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- Add Tailwind -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body class="bg-[#292727] text-white min-h-screen m-0 p-4">
+        <!-- Header with logo -->
+        <header class="flex items-center mb-6">
+            <div class="flex items-center">
+                <img src="logo.png" alt="logo" class="w-12 h-12">
+            </div>
+        </header>
+
+        <div class="max-w-md mx-auto">
+            <!-- Create Group Header -->
+            <h1 class="text-2xl font-bold mb-6">Create a group</h1>
+            
+            <!-- Group Name Input -->
+            <div class="mb-6">
+                <input type="text" id="groupName" placeholder="Group Name" class="w-full bg-transparent border border-gray-400 rounded-lg py-3 px-4 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500">
+            </div>
+            
+            <!-- Add Mates Section -->
+            <div class="mb-6">
+                <label class="block text-lg mb-2">Add Mates</label>
+                <div class="flex gap-2">
+                    <input type="email" id="email" placeholder="Email" class="flex-grow bg-transparent border border-gray-400 rounded-lg py-3 px-4 text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg transition duration-300">Add</button>
+                </div>
+            </div>
+            
+            <!-- Currency Selection -->
+            <div class="mb-6 flex items-center gap-2">
+                <label class="block text-base">The currency that I use is</label>
+                <div class="relative">
+                    <select id="currency" class="bg-white border border-gray-400 text-black py-2 px-3 pr-8 rounded appearance-none focus:outline-none focus:border-yellow-500">
+                        <option value="NPR">NPR</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="INR">INR</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-black">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Create Button -->
+            <button class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg transition duration-300">Create</button>
+            
+            <!-- Added Users List - Hidden by default -->
+            <div id="addedUsers" class="mt-6 hidden">
+                <h3 class="text-lg font-semibold mb-2">Added Users:</h3>
+                <ul class="list-disc pl-5" id="usersList">
+                    <!-- User items will be added here by JavaScript -->
+                </ul>
+            </div>
+        </div>
+        
+        <script>
+            $(document).ready(function() {
+                // Handle Add button click
+                $('button:contains("Add")').click(function() {
+                    const email = $('#email').val().trim();
+                    if (email) {
+                        // Add user to the list
+                        $('#addedUsers').removeClass('hidden');
+                        $('#usersList').append(`
+                            <li class="mb-2 flex justify-between items-center">
+                                <span>${email}</span>
+                                <button class="text-yellow-500 hover:text-yellow-600 remove-user">Remove</button>
+                            </li>
+                        `);
+                        $('#email').val('').focus();
+                    }
+                });
+                
+                // Handle Remove button click (using delegation for dynamically added elements)
+                $(document).on('click', '.remove-user', function() {
+                    $(this).parent().remove();
+                    // Hide the list if empty
+                    if ($('#usersList li').length === 0) {
+                        $('#addedUsers').addClass('hidden');
+                    }
+                });
+                
+                // Handle Create button click
+                $('button:contains("Create")').click(function() {
+                    const groupName = $('#groupName').val().trim();
+                    const currency = $('#currency').val();
+                    
+                    // Collect all emails
+                    const emails = [];
+                    $('#usersList li span').each(function() {
+                        emails.push($(this).text());
+                    });
+                    
+                    if (groupName) {
+                        // Normally would submit this data to server
+                        console.log('Creating group:', {
+                            name: groupName,
+                            currency: currency,
+                            members: emails
+                        });
+                        
+                        // Show success message
+                        alert('Group created successfully!');
+                        // Redirect or other action
+                    } else {
+                        alert('Please enter a group name');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
