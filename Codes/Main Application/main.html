@@ -1,11 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- J-Query -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- Add Tailwind -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script src="script.js"></script>
+    </head>
+    <body class="bg-[#292727] text-white min-h-screen m-0 flex flex-col items-center justify-center">
+        <div class="w-full max-w-md flex flex-col items-center justify-center px-6 py-8">
+            <!-- Welcome Header -->
+            <h1 class="text-4xl font-bold text-center mb-6">
+                Welcome to<br/>
+                Splitwise,<br/>
+                Shlok!
+            </h1>
+            
+            <!-- Logo - bigger with no background -->
+            <div class="mb-10">
+                <img src="logo.png" alt="logo" class="w-55 h-55">
+            </div>
+            
+            <!-- Question Text -->
+            <h2 class="text-xl text-center mb-8">
+                What would you like to do first?
+            </h2>
+            
+            <!-- Apartment Button -->
+            <a href="createGroup.html" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-6 rounded-lg mb-4 flex items-center justify-center transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                ADD YOUR APARTMENT
+            </a>
+            
+            <!-- Trip Button -->
+            <a href="createGroup.html" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-6 rounded-lg mb-4 flex items-center justify-center transition duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                ADD A GROUP TRIP
+            </a>
+            
+            <!-- Skip Button -->
+            <a href="createGroup.html" class="w-full bg-transparent hover:bg-white/10 text-white font-bold py-4 px-6 rounded-lg border border-white/20 flex items-center justify-center transition duration-300">
+                Create Group
+            </a>
+        </div>
+    </body>
 </html>
